@@ -4,5 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  azureKeyOne: 'f734685d2e2a4b7fbdba1cec83f24c16'
 };

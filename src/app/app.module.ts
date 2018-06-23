@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { TextAnalyticsService } from './text-analytics-service/text-analytics.service';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [TextAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
