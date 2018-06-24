@@ -13,7 +13,7 @@ export class AppComponent {
   sentiments : any;
   keyPhrases: any;
 
-  type = 'line';
+  type = 'bar';
   data = {
     labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
     datasets: [
@@ -35,26 +35,30 @@ export class AppComponent {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
       ],
-      borderWidth: 1
-      },
-      {
-        label: "My second dataset",
-        data: [0.65, 0.59, 0.80, 0.81, 0.56, 0.55, 0.40, 0.50]
+      borderWidth: 2
       }
     ]
   };
   
   options = {
     responsive: true,
-    maintainAspectRatio: false
+    maintainAspectRatio: true,
+    legend: {
+      labels: {
+        fontColor: "white",
+        fontSize: 18
+      }
+    }
   };
 
   constructor(private textAnalyticsService: TextAnalyticsService) {
       
   }
 
+  phrases:string[] = [];
+
   private extractSentimentValues(sentiments : any) {
-    var data:number[] = [] ;
+    var data:any[] = [] ;
     
     for(var i = 0; i < sentiments.length; i++) {
       console.log("score: ", sentiments[i].score);
@@ -76,7 +80,10 @@ export class AppComponent {
     this.textAnalyticsService.returnKeyPhrases()
       .then((data) => {
         this.keyPhrases = data;
-        console.log("phrases : ", this.keyPhrases);
+        for(var i = 0; i < data.length; i++) {
+          this.phrases.push(data[i].keyPhrases[0])
+          console.log("my array: ", this.phrases[i]);
+        }
       });
   }
   

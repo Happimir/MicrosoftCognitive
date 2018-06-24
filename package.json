@@ -23,6 +23,7 @@
     "@angular/router": "^5.2.0",
     "angular2-chartjs": "^0.5.1",
     "azure-cognitiveservices-textanalytics": "^1.0.0",
+    "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
     "hoek": "^5.0.3",
     "ng2-charts": "^1.6.0",
