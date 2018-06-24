@@ -11,6 +11,13 @@ export class TextAnalyticsService {
   private documents = { 'documents': [
     { 'id': '1', 'language': 'en', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
     { 'id': '2', 'language': 'es', 'text': 'Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.' },
+    { 'id': '3', 'language': 'en', 'text': 'I really kinda enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '4', 'language': 'en', 'text': 'I really sorta enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '5', 'language': 'en', 'text': 'I really maybeenjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '6', 'language': 'en', 'text': 'I really not enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '7', 'language': 'en', 'text': 'I really very much not enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    { 'id': '8', 'language': 'en', 'text': 'I really hate the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
+    
     ]};
 
   returnSentiments() : Promise<any>{   
