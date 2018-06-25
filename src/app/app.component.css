@@ -1,6 +1,6 @@
 html, body {
     margin: 0px;
-    padding: 0px;   
+    padding: 0px;  
 }
 
 .container {
@@ -17,5 +17,14 @@ html, body {
 .col-sm {
     height: 500px;
     border-style: solid;
-    border-color: white;
+    border-color: rgb(73, 73, 73);
+}
+
+ul {
+    color: white;
+}
+
+#dashboard {
+    padding: 2rem 1rem;
+    background-color: lightsteelblue;
 }
