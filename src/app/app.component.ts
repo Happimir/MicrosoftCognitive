@@ -11,11 +11,11 @@ import { TextAnalyticsService } from './text-analytics-service/text-analytics.se
 export class AppComponent {
 
   sentiments : any;
-  keyPhrases: any;
+  keyPhrases: any[] = [];
 
   type = 'bar';
   data = {
-    labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
+    labels: ["1", "2", "3", "4", "5", "6"],
     datasets: [
       {     
         label: "My First dataset",       
@@ -25,15 +25,16 @@ export class AppComponent {
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(160, 42, 192, 0.2)',
+          'rgba(47, 42, 192, 0.2);'
       ],
       borderColor: [
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(255, 206, 86, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(54, 162, 235, 1)'
       ],
       borderWidth: 2
       }
@@ -42,7 +43,7 @@ export class AppComponent {
   
   options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     legend: {
       labels: {
         fontColor: "white",
@@ -58,17 +59,24 @@ export class AppComponent {
   phrases:string[] = [];
 
   private extractSentimentValues(sentiments : any) {
-    var data:any[] = [] ;
+    let data:any[] = [0, 0, 0, 0, 0, 0] ;
     
-    for(var i = 0; i < sentiments.length; i++) {
-      console.log("score: ", sentiments[i].score);
-      data.push(sentiments[i].score);
+    for(var i = 1; i <= sentiments.length; i++) {
+      for(var j = 0; j < sentiments.length; j++) {
+        if(sentiments[j].id == i) {
+          data[i-1] = sentiments[j].score;
+          console.log("i is: ", i, " j is: ", j, " sentiments at j is ", sentiments[j].score);
+        }
+      }
+      // console.log("score: ", sentiments[i].score);
+      // data.push(sentiments[i].score);
     }
 
     return data;
   }
 
   ngOnInit() {
+    let self = this;
     this.textAnalyticsService.returnSentiments()
       .then((data) => {
         this.sentiments = data;
@@ -79,12 +87,11 @@ export class AppComponent {
 
     this.textAnalyticsService.returnKeyPhrases()
       .then((data) => {
-        this.keyPhrases = data;
-        for(var i = 0; i < data.length; i++) {
-          this.phrases.push(data[i].keyPhrases[0])
-          console.log("my array: ", this.phrases[i]);
-        }
+        data.forEach(function(element) {
+          self.keyPhrases.push(element);
+        });
       });
+      console.log("key Phrases", this.keyPhrases);
   }
   
 

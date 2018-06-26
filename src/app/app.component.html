@@ -1,35 +1,51 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h4 class="jumbotron"  id="dashboard">Dashboard Sample</h4>
-  <!-- <h1 *ngIf="keyPhrases !== undefined">Key Phrases {{ keyPhrases[0].keyPhrases[0] }}</h1>
-  <h1 *ngIf="sentiments !== undefined">Sentiments {{ sentiments[0].score }}</h1> -->
 </div>
 
 
 <div class="container">
   <div class="row">
     <div class="col-sm row1">
-      <chart *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>
+        <chart id="sentimentGraph" *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>   
     </div>
     <div class="col-sm row2">
-      <chart *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>
-    </div>
-    <div class="col-sm row3">
-        <chart *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>
+        <table>
+          <tr class="tableHeader">
+            <th>Id</th>
+            <th>Text</th>
+            <th>Language</th>
+          </tr>
+          <tr *ngFor="let word of textAnalyticsService.documents.documents">
+            <th>{{word.id}}</th>
+            <th>{{word.text}}</th>
+            <th>{{word.language}}</th>
+          </tr>
+        </table>
+        <div>
+          <label>Problem Encountered: The order in which the results are returned, that is their id, is not always the same order you inputted them.</label>
+          <label>As such, it is important that you include a sorting algorithim if you are intending to dispaly it in a graphical format. For this demo I went with an O(N^2) approach, it is simple.</label>        
+        </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm">
-        <ul *ngIf="keyPhrases !== undefined">
-          <li *ngFor="let phrase of phrases">Key Phrase Found: {{phrase}}</li>
-        </ul>
+        <table>
+          <tr class="tableHeader">
+            <th>Id</th>
+            <th>Key Phrases</th>
+          </tr>
+          <tr *ngFor="let element of keyPhrases">
+            <th>{{element.id}}</th>
+            <th>{{element.keyPhrases}}</th>
+          </tr>
+        </table>
     </div>
     <div class="col-sm">
-        <chart *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>
-    </div>
-    <div class="col-sm">
-        <chart *ngIf="sentiments !== undefined" [type]="type" [(data)]="data" [options]="options"></chart>
+        
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm"></div>
+  </div>
 </div>
-

@@ -28,3 +28,41 @@ ul {
     padding: 2rem 1rem;
     background-color: lightsteelblue;
 }
+
+#sentimentGraph {
+    height: 500px;
+    width: 100%;
+}
+
+label {
+    display: inline-block;
+}
+
+.textId {
+    text-align: center;
+}
+
+.textUsed {
+    max-width: 400px;
+    word-break: break-all; 
+}
+
+table {
+    border-collapse: inherit;
+    padding-top: 20px;
+    width: 100%;
+}
+
+th {
+    padding-left:  5px;
+    padding-right:  5px;
+    padding-top:  5px;
+    padding-bottom:  5px;
+    color: white;
+    border-style: solid;
+    border-color: transparent;
+}
+
+label {
+    color: white;
+}
